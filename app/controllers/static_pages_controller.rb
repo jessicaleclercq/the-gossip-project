@@ -1,14 +1,5 @@
 class StaticPagesController < ApplicationController
 
-  # View a list of gossips
-  def home
-    @gossips = Gossip.all
-  end
-
-  def gossip
-    @gossip = Gossip.find(params[:id])
-  end  
-
   def team
   end
 
