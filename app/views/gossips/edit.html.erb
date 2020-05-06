@@ -1,2 +1,25 @@
-<h1>Gossips#edit</h1>
-<p>Find me in app/views/gossips/edit.html.erb</p>
+<html>
+  <head>
+    <title>The Gossip Project</title>
+  </head>
+
+  <body>
+    
+    <div class="container text-center mt-5">
+      <h1 style="color: #053557">Modifier un Gossip !</h1>
+      <div class="m-5">
+        <%= form_tag url_for(action: 'update'), method: "put" do %>
+
+          <%= label_tag 'Titre' %> <br/>
+          <%= text_field_tag 'title' %> 
+          <br /> <br />
+
+          <%= label_tag 'Contenu' %> <br/>
+          <%= text_area_tag 'content' %>
+          <br /> <br />
+
+          <%= submit_tag "Modifier" %> 
+        <% end %>
+    </div>
+  </body>
+</html>

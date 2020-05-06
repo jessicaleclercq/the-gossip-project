@@ -20,16 +20,14 @@ class GossipsController < ApplicationController
 def create
     @gossip = Gossip.new(user: User.first, title: params[:title], content: params[:content])
 
-    if @gossip.save
+    if @gossip.save      
       redirect_to "/"
-      flash[:success] = "Le gossip a bien été créé!" 
+      flash[:success] = "Le gossip a bien été créé!"
     else
-      flash[:error] = "Le gossip n'a pas un format valide, merci de le re-saisir"
-      render "new"
+      flash[:error] = "Le gossip n'a pas un format valide, merci de le saisir à nouveau"
+      render :new
+      
     end
-    # Méthode qui créé un potin à partir du contenu du formulaire de new.html.erb, soumis par l'utilisateur
-    # pour info, le contenu de ce formulaire sera accessible dans le hash params (ton meilleur pote)
-    # Une fois la création faite, on redirige généralement vers la méthode show (pour afficher le potin créé)
   end
 
   def edit
@@ -38,13 +36,18 @@ def create
   end
 
   def update
-    # Méthode qui met à jour le potin à partir du contenu du formulaire de edit.html.erb, soumis par l'utilisateur
-    # pour info, le contenu de ce formulaire sera accessible dans le hash params
-    # Une fois la modification faite, on redirige généralement vers la méthode show (pour afficher le potin modifié)
+    @gossip = Gossip.find(params[:id])
+    if @gossip.update(user: User.first, title: params[:title], content: params[:content])
+      redirect_to "/"
+      flash[:success] = "Le gossip a bien été modifié!"
+    else
+      flash[:error] = "Le gossip n'a pas un format valide, merci de le saisir à nouveau"
+      render :edit
+    end
   end
 
   def destroy
-    # Méthode qui récupère le potin concerné et le détruit en base
-    # Une fois la suppression faite, on redirige généralement vers la méthode index (pour afficher la liste à jour)
+    Gossip.find(params[:id]).delete
+    redirect_to gossips_path
   end
 end

@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :gossips
   resources :users
   resources :cities
+  resources :comments
 
   get 'team', to: 'static_pages#team'
   get 'contact', to: 'static_pages#contact'
