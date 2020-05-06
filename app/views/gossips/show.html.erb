@@ -13,6 +13,8 @@
               <div class="card-body">
                 <h5 class="card-title"><%=@gossip.title %></h5>
                 <p class="card-text"><%= @gossip.content %></p>
+                <p class="card-text"><a href="<%= city_path(@gossip.user.city.id) %>"><%= @gossip.user.city.name %></p></a>
+
                 <p class="card-text">
                 <p class="card-text">
                   <small class="text-muted">

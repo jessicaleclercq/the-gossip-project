@@ -12,9 +12,5 @@ class StaticPagesController < ApplicationController
     puts  params[:first_name]
     puts "$" * 60
   end
-
-  def user
-    @user = User.find(params[:id])
-  end
   
 end

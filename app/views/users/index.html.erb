@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+
+  <body>    
+      <div class="container">
+              <%= link_to "clique ici pour les gossips", new_gossip_path %>
+
+            <h1 class="display-4 text-center my-3">The Gossip Project</h1>
+            <div class="row">
+
+              <% @users.each do |user| %>
+                <div class="col-4 mb-3">
+                    <div class="card">
+                      <img class="card-img-top" alt="Card image cap" src="https://statics.lesinrocks.com/content/thumbs/uploads/2017/05/width-1125-height-612/twin-peaks-15.jpg">
+                      <div class="card-body">
+                        <h5 class="card-title"><a href="<%= user_path(user.id) %>"><%=user.first_name%> <%=user.last_name%></a></h5>
+                        <a type="button" class="btn btn-primary btn-block" href="<%=user_path(user.id) %>">Voir le profil du user</a>
+                      </div>
+                    </div>
+                    </div>
+                    <% end %>
+                </div>    
+            </div>            
+
+  </body>
+
+</html> 

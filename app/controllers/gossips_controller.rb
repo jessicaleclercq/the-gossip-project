@@ -21,11 +21,10 @@ def create
     @gossip = Gossip.new(user: User.first, title: params[:title], content: params[:content])
 
     if @gossip.save
-      flash[:success] = "Le gossip a bien été créé!"
-      puts 
-      redirect_to gossips_path
+      redirect_to "/"
+      flash[:success] = "Le gossip a bien été créé!" 
     else
-      flash[:failure] = "Le gossip n'a pas un format valide, merci de le re-saisir"
+      flash[:error] = "Le gossip n'a pas un format valide, merci de le re-saisir"
       render "new"
     end
     # Méthode qui créé un potin à partir du contenu du formulaire de new.html.erb, soumis par l'utilisateur
